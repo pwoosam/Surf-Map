@@ -114,10 +114,10 @@
 				CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */,
 				CD1CB1121E372A26003F408E /* MapVC.swift */,
 				CD1CB0D91E37247D003F408E /* AppDelegate.swift */,
-				CD1CB0E41E37247D003F408E /* Assets.xcassets */,
-				CD1CB0E61E37247D003F408E /* LaunchScreen.storyboard */,
-				CD1CB0E91E37247D003F408E /* Info.plist */,
 				CD1CB1141E373368003F408E /* Main.storyboard */,
+				CD1CB0E41E37247D003F408E /* Assets.xcassets */,
+				CD1CB0E91E37247D003F408E /* Info.plist */,
+				CD1CB0E61E37247D003F408E /* LaunchScreen.storyboard */,
 			);
 			path = "Surf Map";
 			sourceTree = "<group>";
@@ -548,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD3D34B26404E119D2AD6D2E /* Pods-Surf Map.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = NXT6CX632T;
@@ -564,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 895744D5B80F8B563395C43C /* Pods-Surf Map.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = NXT6CX632T;

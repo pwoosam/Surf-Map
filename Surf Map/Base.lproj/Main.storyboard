@@ -13,6 +13,8 @@
         <scene sceneID="mlf-er-JNg">
             <objects>
                 <navigationController id="1UD-U7-q1s" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="U8q-EA-CK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,7 +47,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oRY-Qb-Fvt"/>
+                    <navigationItem key="navigationItem" id="oRY-Qb-Fvt">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="GCg-fs-EuB">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6mL-7S-Y9n">
+                                <rect key="frame" x="20" y="7" width="127" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Display Surf Spots"/>
+                                <connections>
+                                    <action selector="loadSpots:" destination="sML-be-MLD" eventType="touchUpInside" id="w1B-hY-ElK"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView_" destination="uaK-Di-xwN" id="NAK-XX-3ZQ"/>
                     </connections>

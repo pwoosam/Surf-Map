@@ -9,11 +9,11 @@
 import UIKit
 import GoogleMaps
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet var mapView_: GMSMapView!
 
-    var locationManager = CLLocationManager()
+    var surfData: SurfData = SurfData()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var zoomLevel: Float = 12.0
@@ -23,8 +23,19 @@ class MapVC: UIViewController {
         // Santa Barbara, California with some zoom.
         let camera = GMSCameraPosition.camera(withLatitude: 34.4133, longitude: -119.8610, zoom: self.zoomLevel)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+
         self.view = mapView
+    }
+
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        for (id, (lat, long)) in self.surfData.coordinates {
+            let position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            let surfSpot = GMSMarker(position: position)
+            surfSpot.title = surfData.SB_spot_names_by_id[id]
+            surfSpot.map = mapView
+        }
     }
 }

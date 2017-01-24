@@ -24,53 +24,54 @@ class SurfData {
     init() {
         // Find all JSON for the beaches in SB and place data into self.dicts
         for id in SB_spot_names_by_id.keys {
-            get_surfline_data(UInt32(id), surfdata: self)
+            self.get_surfline_data(UInt32(id))
         }
     }
 
-    func add_data(_ data: NSDictionary) -> Void {
+    func get_surfline_data(_ spot_id: UInt32) -> Void {
+        let api_call: String = "https://api.surfline.com/v1/forecasts/\(spot_id)?"
+        Alamofire.request(api_call).responseJSON { response in
+            let JSON = response.result.value as! NSDictionary
+            self.add_data(JSON)
+        }
+    }
+
+    private func add_data(_ data: NSDictionary) -> Void {
         let id = Int((data["id"] as! NSString).intValue)
         self.dicts.append(data)
-        self.surf_max.updateValue(extract_Surf_data("surf_max", dict: data, surfdata: self), forKey: id)
-        self.surf_min.updateValue(extract_Surf_data("surf_min", dict: data, surfdata: self), forKey: id)
-        self.coordinates.updateValue(extract_lat_lon_data(data, surfdata: self), forKey: id)
-        self.wind_dir_speed.updateValue(extract_wind_data(data, surfdata: self), forKey: id)
+        self.surf_max.updateValue(self.extract_Surf_data("surf_max", dict: data), forKey: id)
+        self.surf_min.updateValue(self.extract_Surf_data("surf_min", dict: data), forKey: id)
+        self.coordinates.updateValue(self.extract_lat_lon_data(data), forKey: id)
+        self.wind_dir_speed.updateValue(self.extract_wind_data(data), forKey: id)
+        print("Adding \(self.SB_spot_names_by_id[id]!) to surf data.")
     }
-}
 
-func get_surfline_data(_ spot_id: UInt32, surfdata: SurfData) -> Void {
-    let api_call: String = "https://api.surfline.com/v1/forecasts/\(spot_id)?"
-    Alamofire.request(api_call).responseJSON { response in
-        let JSON = response.result.value as! NSDictionary
-        surfdata.add_data(JSON)
+    private func extract_Surf_data(_ dataKey: String, dict: NSDictionary) -> [[Double]] {
+        /*
+         Return Array of Arrays containing Floats.
+         
+         For surf_max as dataKey:
+         dict[id][0] is an Array containing surf height in feet for today at 4am, 10am, 4pm, and 10pm.
+         dict[id][1] is for the next day and so on.
+         */
+        let data_dict = dict["Surf"] as! NSDictionary
+        let data = data_dict[dataKey] as! [[Double]]
+        
+        return data
     }
-}
-
-func extract_Surf_data(_ dataKey: String, dict: NSDictionary, surfdata: SurfData) -> [[Double]] {
-    /*
-     Return Array of Arrays containing Floats.
-
-     For surf_max as dataKey:
-        dict[id][0] is an Array containing surf height in feet for today at 4am, 10am, 4pm, and 10pm.
-        dict[id][1] is for the next day and so on.
-     */
-    let data_dict = dict["Surf"] as! NSDictionary
-    let data = data_dict[dataKey] as! [[Double]]
-
-    return data
-}
-
-func extract_lat_lon_data(_ dict: NSDictionary, surfdata: SurfData) -> (Double, Double) {
-    let lat = (dict["lat"] as! NSString).doubleValue
-    let lon = (dict["lon"] as! NSString).doubleValue
-
-    return (lat, lon)
-}
-
-func extract_wind_data(_ dict: NSDictionary, surfdata: SurfData) -> ([[Int]], [[Double]]) {
-    let data_dict = dict["Wind"] as! NSDictionary
-    let wind_direction = data_dict["wind_direction"] as! [[Int]]
-    let wind_speed = data_dict["wind_speed"] as! [[Double]]
-
-    return (wind_direction, wind_speed)
+    
+    private func extract_lat_lon_data(_ dict: NSDictionary) -> (Double, Double) {
+        let lat = (dict["lat"] as! NSString).doubleValue
+        let lon = (dict["lon"] as! NSString).doubleValue
+        
+        return (lat, lon)
+    }
+    
+    private func extract_wind_data(_ dict: NSDictionary) -> ([[Int]], [[Double]]) {
+        let data_dict = dict["Wind"] as! NSDictionary
+        let wind_direction = data_dict["wind_direction"] as! [[Int]]
+        let wind_speed = data_dict["wind_speed"] as! [[Double]]
+        
+        return (wind_direction, wind_speed)
+    }
 }
