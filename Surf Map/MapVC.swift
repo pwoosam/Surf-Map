@@ -35,6 +35,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
             let position = CLLocationCoordinate2D(latitude: lat, longitude: long)
             let surfSpot = GMSMarker(position: position)
             surfSpot.title = surfData.SB_spot_names_by_id[id]
+            surfSpot.icon = surfData.marker_image(id: id, day_index: 0, time_index: 1)
             surfSpot.map = mapView
         }
     }

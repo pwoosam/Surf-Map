@@ -24,11 +24,11 @@ class SurfData {
     init() {
         // Find all JSON for the beaches in SB and place data into self.dicts
         for id in SB_spot_names_by_id.keys {
-            self.get_surfline_data(UInt32(id))
+            self.get_surfline_data(id)
         }
     }
 
-    func get_surfline_data(_ spot_id: UInt32) -> Void {
+    func get_surfline_data(_ spot_id: Int) -> Void {
         let api_call: String = "https://api.surfline.com/v1/forecasts/\(spot_id)?"
         Alamofire.request(api_call).responseJSON { response in
             let JSON = response.result.value as! NSDictionary
@@ -73,5 +73,20 @@ class SurfData {
         let wind_speed = data_dict["wind_speed"] as! [[Double]]
         
         return (wind_direction, wind_speed)
+    }
+    
+    public func marker_image(id: Int, day_index: Int, time_index: Int) -> UIImage {
+        let max: Double = self.surf_max[id]![day_index][time_index]
+        let min: Double = self.surf_min[id]![day_index][time_index]
+        let size: Double = (max + min) / 2
+        var img: UIImage
+        if size < 2.0 {
+             img = #imageLiteral(resourceName: "water_drop")
+        } else if size < 4.0 {
+            img = #imageLiteral(resourceName: "triple_drop")
+        } else {
+            img = #imageLiteral(resourceName: "wave")
+        }
+        return img.resizedImage(newSize: CGSize(width: 26, height: 26))
     }
 }

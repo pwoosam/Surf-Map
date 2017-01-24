@@ -16,6 +16,7 @@
 		CD1CB10E1E3727FF003F408E /* CallSurflineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */; };
 		CD1CB1131E372A26003F408E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CB1121E372A26003F408E /* MapVC.swift */; };
 		CD1CB1161E373368003F408E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1CB1141E373368003F408E /* Main.storyboard */; };
+		CDE2F70B1E378A1500BC8D5B /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */; };
 		F0935D8E9BE93F885AE5ED66 /* Pods_Surf_MapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156A722D47540FE5C087FC95 /* Pods_Surf_MapTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallSurflineAPI.swift; sourceTree = "<group>"; };
 		CD1CB1121E372A26003F408E /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		CD1CB1151E373368003F408E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
 		DD3D34B26404E119D2AD6D2E /* Pods-Surf Map.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Surf Map.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Surf Map/Pods-Surf Map.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 		CD1CB0D81E37247D003F408E /* Surf Map */ = {
 			isa = PBXGroup;
 			children = (
+				CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */,
 				CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */,
 				CD1CB1121E372A26003F408E /* MapVC.swift */,
 				CD1CB0D91E37247D003F408E /* AppDelegate.swift */,
@@ -395,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1CB10E1E3727FF003F408E /* CallSurflineAPI.swift in Sources */,
+				CDE2F70B1E378A1500BC8D5B /* ImageResize.swift in Sources */,
 				CD1CB1131E372A26003F408E /* MapVC.swift in Sources */,
 				CD1CB0DA1E37247D003F408E /* AppDelegate.swift in Sources */,
 			);
