@@ -13,6 +13,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
 
     @IBOutlet var mapView_: GMSMapView!
 
+    let surflineData = SurflineDataPoints(allCoordinates: SurflineDataPoints.get_all_coordinates())
     var surfData: SurfData = SurfData()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
