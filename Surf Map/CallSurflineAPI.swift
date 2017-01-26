@@ -87,8 +87,8 @@ class SurfData {
         return img.resizedImage(newSize: CGSize(width: 26, height: 26))
     }
     
-    public func has_data(_ id: Int) -> Bool {
-        if self.surf_max[id] != nil {
+    public func hasData(_ id: Int) -> Bool {
+        if (self.surf_max[id] != nil && self.surf_min[id] != nil) {
             return true
         } else {
             return false
