@@ -11,28 +11,24 @@ import Alamofire
 
 
 class SurfData {
-    let SB_spot_names_by_id = [4991: "Refugio", 4993: "El Capitan", 4994: "Sands", 4995: "Coal Oil Point",
-                               4997: "Campus Point", 4990: "Leadbetter", 4998: "Sandspit",
-                               139341: "Santa Barbara Harbor", 4999: "Hammond's",
-                               5001: "Carpenteria State Beach", 5000: "Tarpits", 4197: "Rincon"]
     var dicts: Array<NSDictionary> = []
     var surf_max = [Int : [[Double]]]()
     var surf_min = [Int : [[Double]]]()
     var coordinates = [Int : (Double, Double)]()
     var wind_dir_speed = [Int : ([[Int]], [[Double]])]()
+    var spot_name = [Int: String]()
 
     init() {
-        // Find all JSON for the beaches in SB and place data into self.dicts
-        for id in SB_spot_names_by_id.keys {
-            self.get_surfline_data(id)
-        }
     }
 
     func get_surfline_data(_ spot_id: Int) -> Void {
-        let api_call: String = "https://api.surfline.com/v1/forecasts/\(spot_id)?"
+        let api_call: String = "https://api.surfline.com/v1/forecasts/\(spot_id)?days=8&resources=surf,wind"
         Alamofire.request(api_call).responseJSON { response in
-            let JSON = response.result.value as! NSDictionary
-            self.add_data(JSON)
+            let JSON = response.result.value as? NSDictionary
+            if JSON == nil {
+                return
+            }
+            self.add_data(JSON!)
         }
     }
 
@@ -43,7 +39,8 @@ class SurfData {
         self.surf_min.updateValue(self.extract_Surf_data("surf_min", dict: data), forKey: id)
         self.coordinates.updateValue(self.extract_lat_lon_data(data), forKey: id)
         self.wind_dir_speed.updateValue(self.extract_wind_data(data), forKey: id)
-        print("Adding \(self.SB_spot_names_by_id[id]!) to surf data.")
+        self.spot_name.updateValue(self.extract_spot_name(data), forKey: id)
+        print("Adding id: \(id) to surf data.")
     }
 
     private func extract_Surf_data(_ dataKey: String, dict: NSDictionary) -> [[Double]] {
@@ -88,5 +85,17 @@ class SurfData {
             img = #imageLiteral(resourceName: "wave")
         }
         return img.resizedImage(newSize: CGSize(width: 26, height: 26))
+    }
+    
+    public func has_data(_ id: Int) -> Bool {
+        if self.surf_max[id] != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    public func extract_spot_name(_ dict: NSDictionary) -> String {
+        return dict["name"] as! String
     }
 }

@@ -23,7 +23,7 @@ class MapVC: UIViewController, GMSMapViewDelegate {
         // Create a GMSCameraPosition that tells the map to display
         // Santa Barbara, California with some zoom.
         let camera = GMSCameraPosition.camera(withLatitude: 34.4133, longitude: -119.8610, zoom: self.zoomLevel)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -32,11 +32,25 @@ class MapVC: UIViewController, GMSMapViewDelegate {
     }
 
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        for (id, (lat, long)) in self.surfData.coordinates {
+        // TODO: Loading too many spots causes high cpu and ram usage. Remove markers outside of mapView to fix cpu and ram usage.
+        // Do not remove data from surfData, as this would increase data usage and put more load on Surfline's API.
+        for (id, (lat, long)) in self.surflineData.allCoordinates {
             let position = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            if self.surfData.coordinates[id] == nil {
+                let visibleArea = mapView.projection.visibleRegion()
+                let bounds = GMSCoordinateBounds(region: visibleArea)
+                if bounds.contains(position) {
+                    self.surfData.get_surfline_data(id)
+                } else {
+                    continue
+                }
+            }
+            if !surfData.has_data(id) {
+                continue
+            }
             let surfSpot = GMSMarker(position: position)
-            surfSpot.title = surfData.SB_spot_names_by_id[id]
-            surfSpot.icon = surfData.marker_image(id: id, day_index: 0, time_index: 1)
+            surfSpot.title = self.surfData.spot_name[id]
+            surfSpot.icon = self.surfData.marker_image(id: id, day_index: 0, time_index: 1)
             surfSpot.map = mapView
         }
     }

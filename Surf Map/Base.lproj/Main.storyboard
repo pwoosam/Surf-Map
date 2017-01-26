@@ -15,7 +15,7 @@
                 <navigationController id="1UD-U7-q1s" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="U8q-EA-CK3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U8q-EA-CK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -56,7 +56,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView_" destination="uaK-Di-xwN" id="NAK-XX-3ZQ"/>
+                        <outlet property="mapView_" destination="uaK-Di-xwN" id="pyQ-dO-Glb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd3-fg-4RQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
