@@ -11,6 +11,7 @@ import Alamofire
 
 
 class SurfData {
+    let icons: [UIImage]
     var dicts: Array<NSDictionary> = []
     var surf_max = [Int : [[Double]]]()
     var surf_min = [Int : [[Double]]]()
@@ -19,6 +20,11 @@ class SurfData {
     var spot_name = [Int: String]()
 
     init() {
+        var images = [UIImage]()
+        for str in ["💧", "💦", "🌊"] {
+            images.append(str.image())
+        }
+        self.icons = images
     }
 
     func get_surfline_data(_ spot_id: Int) -> Void {
@@ -76,15 +82,15 @@ class SurfData {
         let max: Double = self.surf_max[id]![day_index][time_index]
         let min: Double = self.surf_min[id]![day_index][time_index]
         let size: Double = (max + min) / 2
-        var img: UIImage
+        let img: UIImage
         if size < 2.0 {
-             img = #imageLiteral(resourceName: "water_drop")
+            img = self.icons[0]
         } else if size < 4.0 {
-            img = #imageLiteral(resourceName: "triple_drop")
+            img = self.icons[1]
         } else {
-            img = #imageLiteral(resourceName: "wave")
+            img = self.icons[2]
         }
-        return img.resizedImage(newSize: CGSize(width: 26, height: 26))
+        return img
     }
     
     public func hasData(_ id: Int) -> Bool {

@@ -16,7 +16,7 @@
 		CD1CB10E1E3727FF003F408E /* CallSurflineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */; };
 		CD1CB1131E372A26003F408E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1CB1121E372A26003F408E /* MapVC.swift */; };
 		CD1CB1161E373368003F408E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1CB1141E373368003F408E /* Main.storyboard */; };
-		CDE2F70B1E378A1500BC8D5B /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */; };
+		CDE2F70B1E378A1500BC8D5B /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE2F70A1E378A1500BC8D5B /* Helpers.swift */; };
 		CDF013821E38A74D00C22D8B /* spot_id_coordinates.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDF013801E38A74D00C22D8B /* spot_id_coordinates.txt */; };
 		CDF013831E38A74D00C22D8B /* spot_ids.txt in Resources */ = {isa = PBXBuildFile; fileRef = CDF013811E38A74D00C22D8B /* spot_ids.txt */; };
 		CDF013851E38A79400C22D8B /* SurflineDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF013841E38A79400C22D8B /* SurflineDataUtils.swift */; };
@@ -60,7 +60,7 @@
 		CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallSurflineAPI.swift; sourceTree = "<group>"; };
 		CD1CB1121E372A26003F408E /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		CD1CB1151E373368003F408E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
+		CDE2F70A1E378A1500BC8D5B /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		CDF013801E38A74D00C22D8B /* spot_id_coordinates.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = spot_id_coordinates.txt; path = SurflineCrawler/spot_id_coordinates.txt; sourceTree = "<group>"; };
 		CDF013811E38A74D00C22D8B /* spot_ids.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = spot_ids.txt; path = SurflineCrawler/spot_ids.txt; sourceTree = "<group>"; };
 		CDF013841E38A79400C22D8B /* SurflineDataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurflineDataUtils.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			children = (
 				CDF013841E38A79400C22D8B /* SurflineDataUtils.swift */,
 				CDF0137F1E38A73800C22D8B /* SurflineData */,
-				CDE2F70A1E378A1500BC8D5B /* ImageResize.swift */,
+				CDE2F70A1E378A1500BC8D5B /* Helpers.swift */,
 				CD1CB10D1E3727FF003F408E /* CallSurflineAPI.swift */,
 				CD1CB1121E372A26003F408E /* MapVC.swift */,
 				CD1CB0D91E37247D003F408E /* AppDelegate.swift */,
@@ -418,7 +418,7 @@
 			files = (
 				CD1CB10E1E3727FF003F408E /* CallSurflineAPI.swift in Sources */,
 				CDF013851E38A79400C22D8B /* SurflineDataUtils.swift in Sources */,
-				CDE2F70B1E378A1500BC8D5B /* ImageResize.swift in Sources */,
+				CDE2F70B1E378A1500BC8D5B /* Helpers.swift in Sources */,
 				CD1CB1131E372A26003F408E /* MapVC.swift in Sources */,
 				CD1CB0DA1E37247D003F408E /* AppDelegate.swift in Sources */,
 			);
