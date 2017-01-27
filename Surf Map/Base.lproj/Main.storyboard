@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1UD-U7-q1s">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,12 +13,17 @@
         <scene sceneID="mlf-er-JNg">
             <objects>
                 <navigationController id="1UD-U7-q1s" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U8q-EA-CK3">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="U8q-EA-CK3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="x4D-Qf-qNP">
+                        <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="sML-be-MLD" kind="relationship" relationship="rootViewController" id="kyc-GU-1hb"/>
                     </connections>
@@ -31,37 +36,18 @@
         <scene sceneID="9NI-iA-k79">
             <objects>
                 <viewController title="MapVC" id="sML-be-MLD" customClass="MapVC" customModule="Surf_Map" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fnt-Xg-9Ow"/>
-                        <viewControllerLayoutGuide type="bottom" id="RFC-dO-xA3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="sM5-Qa-C5o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaK-Di-xwN" userLabel="Map View" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <navigationItem key="navigationItem" id="oRY-Qb-Fvt">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Preferences" id="JFo-sd-C8S" userLabel="qq">
+                        <barButtonItem key="rightBarButtonItem" title="Preferences" id="JFo-sd-C8S" userLabel="Preferences">
                             <connections>
                                 <segue destination="cu3-He-YMx" kind="show" id="zod-Bc-x2u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mapView_" destination="uaK-Di-xwN" id="pyQ-dO-Glb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd3-fg-4RQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-884.05797101449286" y="-54.619565217391312"/>
+            <point key="canvasLocation" x="-885" y="-54.929577464788736"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="hLZ-vw-bF3">
@@ -111,11 +97,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-So-Ivf">
-                                <rect key="frame" x="160" y="261" width="94" height="29"/>
+                                <rect key="frame" x="77" y="284" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </stepper>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="2An-gk-b17">
-                                <rect key="frame" x="282" y="261" width="94" height="29"/>
+                                <rect key="frame" x="208" y="284" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </stepper>
                         </subviews>
@@ -127,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2V-0Z-WCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-81" y="-55"/>
+            <point key="canvasLocation" x="165" y="-54"/>
         </scene>
     </scenes>
 </document>
